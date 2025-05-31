@@ -35,6 +35,8 @@ class Main( App.State ):
         self.switch = pygame.mixer.Sound( 'Assets/Sounds/switch20.ogg' )
 
         self.switch_screen = App.SwitchSceen()
+        
+    def start( self ):
 
         pygame.mixer.music.load( 'Assets/Musics/Cheerful Annoyance.ogg' )
         pygame.mixer.music.play()

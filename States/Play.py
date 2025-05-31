@@ -18,6 +18,16 @@ class Play( App.State ):
         self.entities.append( Entities.Player( pygame.Vector2( self.map.width / 2, self.map.height / 2 ) ) )
         player = self.entities[ 0 ]
         self.offset = player.pos - self.screen_center
+        self.crosshair = App.Crosshair()
+        pygame.mouse.set_visible( False )
+
+        pygame.mixer.music.load( 'Assets/Musics/Infinite Descent.ogg' )
+        pygame.mixer.music.set_volume( .3 )
+        pygame.mixer.music.play()
+    
+    def stop( self ):
+        pygame.mouse.set_visible( True )
+        pygame.mixer.music.stop()
 
     def update( self ):
         if self.switch_screen.isComplete():
@@ -33,6 +43,8 @@ class Play( App.State ):
             if d > 5:
                 screen_scroll = pygame.Vector2( player.screen_pos - self.screen_center )
                 self.offset -= screen_scroll.normalize() * d * App.Config.FPS / 1000
+            
+            self.crosshair.update()
         else:
             self.switch_screen.update()
     
@@ -51,6 +63,8 @@ class Play( App.State ):
             win.blit( App.icons.ARROW_RIGHT, ( x + 100, y ) )
             win.blit( App.icons.ARROW_DOWN, ( x, y + 100 ) )
             win.blit( App.icons.ARROW_LEFT, ( x - 100, y ) )
+
+        self.crosshair.render()
 
         if not self.switch_screen.isComplete():
             self.switch_screen.render()

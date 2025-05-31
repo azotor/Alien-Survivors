@@ -9,6 +9,7 @@ from App.Map import Map
 from App.StatesManager import StatesManager
 from App.Game import Game
 from App.Icons import Icons
+from App.Crosshair import Crosshair
 
 icons = Icons()
 keys = Keys()

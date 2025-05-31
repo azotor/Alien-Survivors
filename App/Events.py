@@ -12,10 +12,10 @@ class Events:
                 self.iterate = False
         
         keys = pygame.key.get_pressed()
-        App.keys.UP = keys[ pygame.K_UP ]
-        App.keys.RIGHT = keys[ pygame.K_RIGHT ]
-        App.keys.DOWN = keys[ pygame.K_DOWN ]
-        App.keys.LEFT = keys[ pygame.K_LEFT ]
+        App.keys.UP = keys[ pygame.K_UP ] or keys[ pygame.K_w ]
+        App.keys.RIGHT = keys[ pygame.K_RIGHT ] or keys[ pygame.K_d ]
+        App.keys.DOWN = keys[ pygame.K_DOWN ] or keys[ pygame.K_s ]
+        App.keys.LEFT = keys[ pygame.K_LEFT ] or keys[ pygame.K_a ]
         App.keys.CONFIRM = keys[ pygame.K_RETURN ]
         App.keys.CANCEL= keys[ pygame.K_ESCAPE ]
 
